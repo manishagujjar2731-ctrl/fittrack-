@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FitTrack Pro - The all-in-one athletic fitness platform. Scientific workout programming, dynamic macro calculators, audio HIIT timers, and progressive overload tracking.">
+  <title>FitTrack Pro | The Modern Fitness & Performance Engine</title>
+
+  <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas Layer -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- =========================================================================
+       1. NAVIGATION BAR
+       ========================================================================= -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-icon">⚡</div>
+        <span>FITTRACK</span>
+        <span class="pro-badge">PRO</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#calculators" class="nav-link">Calculators</a></li>
+          <li><a href="#exercises" class="nav-link">Workouts</a></li>
+          <li><a href="#nutrition" class="nav-link">Nutrition</a></li>
+          <li><a href="#programs" class="nav-link">Programs</a></li>
+          <li><a href="#tracker" class="nav-link">PR Tracker</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- HIIT Timer Quick Launch -->
+        <button id="open-hiit-timer-btn" class="btn btn-secondary btn-sm" title="Launch HIIT Timer">
+          ⏱️ <span style="display: inline-block;">HIIT Timer</span>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          ☀️
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="menu-toggle" aria-label="Toggle Mobile Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <section class="section hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="section-tag">
+          <span>⚡ Next-Generation Training Engine</span>
+        </div>
+        <h1 class="hero-headline">
+          Transform Your Physique.<br>
+          <span class="highlight-box">Master Your Data.</span>
+        </h1>
+        <p class="hero-description">
+          Engineered for lifters, athletes, and fitness enthusiasts. Experience scientific workout routine programming, precision TDEE & macro calculations, audio-guided interval timers, and intelligent progressive overload tracking.
+        </p>
+
+        <div class="hero-cta-group">
+          <button id="hero-start-workout" class="btn btn-primary btn-lg">
+            🔥 Start Today's Routine
+          </button>
+          <button id="hero-calc-cta" class="btn btn-secondary btn-lg">
+            ⚡ Calculate My Macros
+          </button>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <h4>128K<span>+</span></h4>
+            <p>Active Athletes</p>
+          </div>
+          <div class="stat-item">
+            <h4>4.8M<span>kg</span></h4>
+            <p>Weekly Volume Lifted</p>
+          </div>
+          <div class="stat-item">
+            <h4>98.4<span>%</span></h4>
+            <p>Goal Achievement Rate</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Interactive Readiness Card -->
+      <div class="glass-panel hero-card">
+        <div class="hero-card-header">
+          <div class="athlete-profile">
+            <div class="athlete-avatar">AH</div>
+            <div class="athlete-info">
+              <h4>Alex Hunter</h4>
+              <p>🔥 14-Day Consistency Streak</p>
+            </div>
+          </div>
+          <span class="badge badge-green">OPTIMAL</span>
+        </div>
+
+        <div class="readiness-ring-wrapper">
+          <div class="circular-score">
+            <svg viewBox="0 0 100 100">
+              <circle class="bg-circle" cx="50" cy="50" r="40" />
+              <circle class="progress-circle" cx="50" cy="50" r="40" />
+            </svg>
+            <div class="score-value">92%</div>
+          </div>
+          <div class="readiness-details">
+            <h5>⚡ High Nervous System Readiness</h5>
+            <p>Resting HR: 54 BPM • Sleep: 8h 12m. Prime physiological state for heavy compound overload.</p>
+          </div>
+        </div>
+
+        <div class="today-workout-preview">
+          <div class="preview-title">
+            <span>Today's Target Protocol</span>
+            <span style="color: var(--accent-primary); font-weight: 700;">Day 3: Push Hypertrophy</span>
+          </div>
+          <div class="workout-tag-row">
+            <span class="badge badge-cyan">Upper Chest</span>
+            <span class="badge badge-purple">Delts</span>
+            <span class="badge badge-orange">Triceps</span>
+          </div>
+
+          <div class="exercise-mini-list">
+            <div class="exercise-mini-item">
+              <span>Barbell Bench Press</span>
+              <span class="target">4 sets × 8 reps @ 85kg</span>
+            </div>
+            <div class="exercise-mini-item">
+              <span>Incline Dumbbell Press</span>
+              <span class="target">3 sets × 10 reps @ 32kg</span>
+            </div>
+            <div class="exercise-mini-item">
+              <span>Overhead Tricep Extension</span>
+              <span class="target">3 sets × 12 reps @ 25kg</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" style="width: 100%;" onclick="workoutTracker.openRoutineDrawer()">
+            Open Active Routine Builder
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. FEATURES / CORE CAPABILITIES
+       ========================================================================= -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Scientific Methodology</div>
+        <h2 class="section-title">Built On The Pillars Of <span class="gradient-text">Human Performance</span></h2>
+        <p class="section-subtitle">
+          Eliminate guesswork. FitTrack integrates biomechanical science, precision sports nutrition, and real-time biometric feedback into one seamless ecosystem.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-panel feature-card">
+          <div class="feature-icon-box green">🔬</div>
+          <h3>Evidence-Based Programming</h3>
+          <p>
+            Curated periodization splits designed for maximal muscle hypertrophy and absolute strength. Every set and rep range is calculated to trigger optimal mechanical tension.
+          </p>
+          <ul class="feature-list">
+            <li><span>✓</span> Push / Pull / Legs (PPL) splits</li>
+            <li><span>✓</span> Automated progressive overload cues</li>
+            <li><span>✓</span> Fatigue and volume management</li>
+          </ul>
+        </div>
+
+        <div class="glass-panel feature-card">
+          <div class="feature-icon-box cyan">⚡</div>
+          <h3>Dynamic Macro Fuel Engine</h3>
+          <p>
+            Mifflin-St Jeor metabolic calculations tuned to your exact body composition, lean mass, and daily activity. Automatically splits grams of protein, carbs, and fats.
+          </p>
+          <ul class="feature-list">
+            <li><span>✓</span> Real-time caloric deficit & surplus models</li>
+            <li><span>✓</span> Gram-accurate protein benchmarks</li>
+            <li><span>✓</span> Pre- & post-workout nutrient timing</li>
+          </ul>
+        </div>
+
+        <div class="glass-panel feature-card">
+          <div class="feature-icon-box orange">⏱️</div>
+          <h3>Synthesized HIIT & Rest Timer</h3>
+          <p>
+            Built-in interval timers powered by the Web Audio API. Crisp acoustic cues signal work, rest, and preparation intervals without requiring external music pauses.
+          </p>
+          <ul class="feature-list">
+            <li><span>✓</span> Tabata & custom HIIT intervals</li>
+            <li><span>✓</span> Auto-triggering gym set rest periods</li>
+            <li><span>✓</span> Zero latency synthesized tones</li>
+          </ul>
+        </div>
+
+        <div class="glass-panel feature-card">
+          <div class="feature-icon-box purple">📈</div>
+          <h3>Progressive Overload Tracker</h3>
+          <p>
+            Track your 1-Rep Max benchmarks, personal records, and cumulative volume. Visual SVG analytics illustrate your bodyweight trajectory and strength curve over time.
+          </p>
+          <ul class="feature-list">
+            <li><span>✓</span> Interactive 1RM percentage matrix</li>
+            <li><span>✓</span> Weight progression analytics</li>
+            <li><span>✓</span> Offline localStorage data persistence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. CALCULATORS SUITE
+       ========================================================================= -->
+  <section class="section" id="calculators" style="background: rgba(0, 0, 0, 0.2);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Interactive Calculators</div>
+        <h2 class="section-title">Precision <span class="gradient-text">Body & Strength Analytics</span></h2>
+        <p class="section-subtitle">
+          Calculate your energy expenditure, macronutrient distribution, 1-Rep Max strength benchmarks, and heart rate training zones with clinical precision.
+        </p>
+      </div>
+
+      <div class="calculator-container">
+        <!-- Tabs Navigation -->
+        <div class="calc-tabs">
+          <button class="calc-tab-btn active" data-target="tab-tdee">⚡ TDEE & Macros</button>
+          <button class="calc-tab-btn" data-target="tab-1rm">🏋️ 1-Rep Max (1RM)</button>
+          <button class="calc-tab-btn" data-target="tab-heart-rate">❤️ Heart Rate Zones</button>
+          <button class="calc-tab-btn" data-target="tab-body-fat">📐 Body Fat % (Navy)</button>
+        </div>
+
+        <!-- TAB 1: TDEE & MACROS -->
+        <div class="calc-tab-pane active" id="tab-tdee">
+          <div class="glass-panel calc-grid">
+            <div class="calc-form-col">
+              <h3 style="font-size: 1.25rem;">Metabolic & Goal Parameters</h3>
+
+              <div class="form-group">
+                <label class="form-label" for="tdee-gender">Gender</label>
+                <select id="tdee-gender" class="select-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="tdee-age">Age (Years)</label>
+                  <input type="number" id="tdee-age" class="input-control" value="28" min="15" max="95">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="tdee-weight">Weight (kg)</label>
+                  <input type="number" id="tdee-weight" class="input-control" value="78" min="30" max="250">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tdee-height">Height (cm)</label>
+                <input type="number" id="tdee-height" class="input-control" value="180" min="120" max="230">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tdee-activity">Physical Activity Level</label>
+                <select id="tdee-activity" class="select-control">
+                  <option value="sedentary">Sedentary (Desk job, little/no exercise)</option>
+                  <option value="light">Lightly Active (Training 1-3 days/week)</option>
+                  <option value="moderate" selected>Moderately Active (Hard training 3-5 days/week)</option>
+                  <option value="heavy">Very Active (Hard training 6-7 days/week)</option>
+                  <option value="athlete">Elite Athlete (2x/day training or intense physical job)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tdee-goal">Physique Goal</label>
+                <select id="tdee-goal" class="select-control">
+                  <option value="aggressive_cut">Aggressive Fat Loss (-25% Deficit)</option>
+                  <option value="cut" selected>Moderate Fat Loss (-15% Deficit)</option>
+                  <option value="maintain">Maintenance & Recomposition (0%)</option>
+                  <option value="lean_bulk">Lean Muscle Growth (+10% Surplus)</option>
+                  <option value="bulk">Aggressive Mass Phase (+20% Surplus)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tdee-diet">Dietary Blueprint</label>
+                <select id="tdee-diet" class="select-control">
+                  <option value="high_protein" selected>High-Protein Athletic (35% P / 40% C / 25% F)</option>
+                  <option value="balanced">Balanced Fitness (30% P / 40% C / 30% F)</option>
+                  <option value="endurance">Endurance Carb-Heavy (20% P / 55% C / 25% F)</option>
+                  <option value="keto">Ketogenic Low-Carb (25% P / 5% C / 70% F)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-results-col">
+              <div class="result-card-large">
+                <div class="result-sub">Recommended Daily Caloric Target</div>
+                <div class="result-number" id="tdee-res-calories">2,420</div>
+                <div class="result-unit">kcal / day</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted); border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                <span>Maintenance (TDEE): <strong id="tdee-res-maint" style="color: var(--text-main);">2,847 kcal</strong></span>
+                <span>Base Metabolic (BMR): <strong id="tdee-res-bmr" style="color: var(--text-main);">1,780 kcal</strong></span>
+              </div>
+
+              <div class="macro-split-bars">
+                <!-- Protein -->
+                <div class="macro-bar-item">
+                  <div class="macro-bar-header">
+                    <span style="color: var(--accent-primary);">🍗 Protein</span>
+                    <span id="tdee-protein-grams">212g (35%)</span>
+                  </div>
+                  <div class="macro-progress">
+                    <div id="tdee-protein-fill" class="macro-progress-fill fill-protein" style="width: 35%;"></div>
+                  </div>
+                </div>
+
+                <!-- Carbs -->
+                <div class="macro-bar-item">
+                  <div class="macro-bar-header">
+                    <span style="color: var(--accent-secondary);">🍚 Carbohydrates</span>
+                    <span id="tdee-carbs-grams">242g (40%)</span>
+                  </div>
+                  <div class="macro-progress">
+                    <div id="tdee-carbs-fill" class="macro-progress-fill fill-carbs" style="width: 40%;"></div>
+                  </div>
+                </div>
+
+                <!-- Fat -->
+                <div class="macro-bar-item">
+                  <div class="macro-bar-header">
+                    <span style="color: var(--accent-fire);">🥑 Healthy Fats</span>
+                    <span id="tdee-fat-grams">67g (25%)</span>
+                  </div>
+                  <div class="macro-progress">
+                    <div id="tdee-fat-fill" class="macro-progress-fill fill-fat" style="width: 25%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <button id="apply-tdee-to-planner" class="btn btn-primary" style="margin-top: 2rem;">
+                📥 Apply Targets to Daily Nutrition Planner
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: 1-REP MAX (1RM) -->
+        <div class="calc-tab-pane" id="tab-1rm">
+          <div class="glass-panel calc-grid">
+            <div class="calc-form-col">
+              <h3 style="font-size: 1.25rem;">Strength Input</h3>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                Enter a weight and rep count you have successfully lifted with clean form (1 to 12 reps) to project your maximum single-rep potential.
+              </p>
+
+              <div class="form-group">
+                <label class="form-label" for="onerm-weight">Weight Lifted (kg)</label>
+                <input type="number" id="onerm-weight" class="input-control" value="100" min="10" max="500">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="onerm-reps">Repetitions Performed</label>
+                <input type="number" id="onerm-reps" class="input-control" value="5" min="1" max="15">
+              </div>
+
+              <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+                💡 <strong>Scientific Note:</strong> Uses combined Brzycki and Epley load equations to provide maximum reliability for strength and hypertrophy programming.
+              </div>
+            </div>
+
+            <div class="calc-results-col">
+              <div class="result-card-large">
+                <div class="result-sub">Estimated 1-Rep Max (100%)</div>
+                <div class="result-number" id="onerm-res-display">115 kg</div>
+                <div class="result-unit">Absolute Single-Rep Capacity</div>
+              </div>
+
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Training Load & Intensity Distribution</h4>
+              <table class="rm-table">
+                <thead>
+                  <tr>
+                    <th>Load %</th>
+                    <th>Weight</th>
+                    <th>Optimal Reps</th>
+                    <th>Adaptation Focus</th>
+                  </tr>
+                </thead>
+                <tbody id="onerm-table-body">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: HEART RATE ZONES -->
+        <div class="calc-tab-pane" id="tab-heart-rate">
+          <div class="glass-panel calc-grid">
+            <div class="calc-form-col">
+              <h3 style="font-size: 1.25rem;">Cardiovascular Parameters</h3>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                Uses the Karvonen formula (incorporating Heart Rate Reserve) to calculate individualized training zones from recovery to peak anaerobic capacity.
+              </p>
+
+              <div class="form-group">
+                <label class="form-label" for="hr-age">Your Age (Years)</label>
+                <input type="number" id="hr-age" class="input-control" value="28" min="14" max="99">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="hr-resting">Resting Heart Rate (BPM)</label>
+                <input type="number" id="hr-resting" class="input-control" value="60" min="35" max="120">
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Measure immediately upon waking for highest accuracy.</span>
+              </div>
+            </div>
+
+            <div class="calc-results-col">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1.1rem;">Karvonen Heart Rate Zones</h4>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">Max HR: <strong id="hr-max-display" style="color: var(--accent-primary);">188 BPM</strong></div>
+              </div>
+
+              <div class="zone-list" id="hr-zone-list">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: BODY FAT % ESTIMATOR -->
+        <div class="calc-tab-pane" id="tab-body-fat">
+          <div class="glass-panel calc-grid">
+            <div class="calc-form-col">
+              <h3 style="font-size: 1.25rem;">US Navy Circumference Method</h3>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                The US Navy formula estimates body fat percentage using standard tape measurements with high correlation to DEXA scans.
+              </p>
+
+              <div class="form-group">
+                <label class="form-label" for="bf-gender">Gender</label>
+                <select id="bf-gender" class="select-control">
+                  <option value="male" selected>Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="bf-height">Height (cm)</label>
+                <input type="number" id="bf-height" class="input-control" value="180" min="120" max="230">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="bf-neck">Neck Circumference (cm)</label>
+                <input type="number" id="bf-neck" class="input-control" value="38" min="20" max="60">
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Measure just below the Adam's apple.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="bf-waist">Waist Circumference (cm)</label>
+                <input type="number" id="bf-waist" class="input-control" value="84" min="50" max="180">
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Measure horizontally at navel level (relaxed, no sucking in).</span>
+              </div>
+
+              <div class="form-group" id="bf-hip-group" style="display: none;">
+                <label class="form-label" for="bf-hip">Hip Circumference (cm)</label>
+                <input type="number" id="bf-hip" class="input-control" value="95" min="60" max="180">
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Measure around the widest point of hips/glutes.</span>
+              </div>
+            </div>
+
+            <div class="calc-results-col">
+              <div class="result-card-large">
+                <div class="result-sub">Estimated Body Fat Percentage</div>
+                <div class="result-number" id="bf-res-number">14.8%</div>
+                <div class="result-unit" id="bf-res-category" style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary);">Fitness Level</div>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: 1.25rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                <strong style="color: var(--text-main); display: block; margin-bottom: 0.5rem;">Standard Male / Female Benchmarks:</strong>
+                • Athletes: 6 - 13% (M) / 14 - 20% (F)<br>
+                • Fitness: 14 - 17% (M) / 21 - 24% (F)<br>
+                • Average: 18 - 24% (M) / 25 - 31% (F)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. EXERCISE DATABASE & WORKOUT ROUTINE BUILDER
+       ========================================================================= -->
+  <section class="section" id="exercises">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Exercise Library & Routine Architect</div>
+        <h2 class="section-title">Design Your Custom <span class="gradient-text">Training Split</span></h2>
+        <p class="section-subtitle">
+          Filter exercises by primary muscle group or equipment. Review biomechanical form cues and click <strong>"+ Add to Routine"</strong> to assemble your workout session.
+        </p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="exercise-toolbar">
+        <div class="search-filter-row">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="exercise-search-input" class="input-control" placeholder="Search exercises, muscles, or equipment (e.g., 'Bench', 'Chest', 'Barbell')...">
+          </div>
+        </div>
+
+        <div class="filter-pills-row">
+          <button class="filter-pill active" data-filter="all">All Muscles</button>
+          <button class="filter-pill" data-filter="chest">Chest</button>
+          <button class="filter-pill" data-filter="back">Back</button>
+          <button class="filter-pill" data-filter="legs">Legs</button>
+          <button class="filter-pill" data-filter="shoulders">Shoulders</button>
+          <button class="filter-pill" data-filter="arms">Arms</button>
+          <button class="filter-pill" data-filter="core">Core</button>
+        </div>
+      </div>
+
+      <!-- Exercise Grid -->
+      <div class="exercise-grid" id="exercise-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Routine Builder Trigger Button -->
+  <button id="routine-drawer-trigger" class="routine-drawer-trigger" aria-label="Open Routine Drawer">
+    <span>📋 My Routine</span>
+    <div id="routine-count" class="routine-count-badge">4</div>
+  </button>
+
+  <!-- Routine Builder Slide-out Modal / Drawer -->
+  <div id="routine-backdrop" class="routine-modal-backdrop"></div>
+  <aside id="routine-modal" class="routine-modal">
+    <div class="routine-header">
+      <div>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Workout Routine Builder</h3>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Customize your sets, reps, and target load</p>
+      </div>
+      <button id="close-routine-btn" class="btn-icon" style="width: 36px; height: 36px;">✕</button>
+    </div>
+
+    <div class="routine-body" id="routine-items-list">
+      <!-- Populated dynamically by workoutTracker.renderRoutineList() -->
+    </div>
+
+    <div class="routine-footer">
+      <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+        <span>Total Exercises: <strong id="routine-total-sets" style="color: var(--accent-primary);">14 sets</strong></span>
+        <span>Estimated Volume: <strong id="routine-total-volume" style="color: var(--accent-primary);">0 kg</strong></span>
+      </div>
+
+      <button id="start-routine-btn" class="btn btn-primary" style="width: 100%;">
+        🚀 Launch Active Workout Session
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       6. ACTIVE HIIT & INTERVAL TIMER MODAL
+       ========================================================================= -->
+  <div id="timer-modal" class="timer-modal">
+    <div class="timer-card glass-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="font-size: 1.25rem; font-weight: 800;">⚡ Audio Interval & HIIT Timer</h3>
+        <button id="close-timer-modal" class="btn-icon" style="width: 36px; height: 36px;">✕</button>
+      </div>
+
+      <!-- Circular SVG Timer Ring -->
+      <div class="timer-ring-container">
+        <svg viewBox="0 0 240 240">
+          <circle class="timer-ring-bg" cx="120" cy="120" r="110" />
+          <circle id="timer-progress-ring" class="timer-ring-bar" cx="120" cy="120" r="110" />
+        </svg>
+
+        <div class="timer-content">
+          <div id="timer-phase-text" class="timer-phase">PREPARATION</div>
+          <div id="timer-digits" class="timer-digits">00:05</div>
+          <div id="timer-round-text" class="timer-sub">Round 1 / 8</div>
+        </div>
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        🔊 Acoustic audio synthesis alerts you at 3-2-1 and interval changes.
+      </div>
+
+      <div class="timer-controls">
+        <button id="timer-play-pause" class="btn btn-primary btn-lg">
+          ▶ Start
+        </button>
+        <button id="timer-reset" class="btn btn-secondary btn-lg">
+          🔄 Reset
+        </button>
+      </div>
+
+      <button id="finish-active-session-btn" class="btn btn-cyan btn-sm" style="margin-top: 1.5rem; display: none;" onclick="workoutTracker.completeActiveWorkout()">
+        🏁 Complete Workout & Log Volume
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       7. NUTRITION & MEAL PLANNER
+       ========================================================================= -->
+  <section class="section" id="nutrition">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Macro Fuel Blueprint</div>
+        <h2 class="section-title">Track Daily <span class="gradient-text">Calories & Macronutrients</span></h2>
+        <p class="section-subtitle">
+          Ensure your body has the exact amino acids, glycogen, and essential fatty acids needed to recover, build lean mass, and perform at your highest level.
+        </p>
+      </div>
+
+      <div class="nutrition-dashboard-grid">
+        <!-- Left: Summary Rings & Quick Add -->
+        <div class="glass-panel" style="padding: 2rem;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Daily Energy Balance</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Real-time tracking towards your calculated caloric target.
+          </p>
+
+          <div style="text-align: center; margin-bottom: 1.5rem;">
+            <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Calories Consumed</div>
+            <div style="font-size: 3.5rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent-primary); line-height: 1;">
+              <span id="nutrition-cals-consumed">1,980</span>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+              Target: <span id="nutrition-cals-target">2,650</span> kcal • <span id="nutrition-cals-remaining" style="font-weight: 600;">670 kcal remaining</span>
+            </div>
+          </div>
+
+          <!-- Macro Circle Summary -->
+          <div class="macro-circle-summary">
+            <div class="macro-ring-stat">
+              <span class="label" style="color: var(--accent-primary);">Protein</span>
+              <span class="val" id="stat-protein-val">146 / 185g</span>
+              <div class="macro-progress" style="width: 80px; height: 6px;">
+                <div id="bar-protein-fill" class="macro-progress-fill fill-protein" style="width: 78%;"></div>
+              </div>
+            </div>
+
+            <div class="macro-ring-stat">
+              <span class="label" style="color: var(--accent-secondary);">Carbs</span>
+              <span class="val" id="stat-carbs-val">198 / 280g</span>
+              <div class="macro-progress" style="width: 80px; height: 6px;">
+                <div id="bar-carbs-fill" class="macro-progress-fill fill-carbs" style="width: 70%;"></div>
+              </div>
+            </div>
+
+            <div class="macro-ring-stat">
+              <span class="label" style="color: var(--accent-fire);">Fat</span>
+              <span class="val" id="stat-fat-val">58 / 75g</span>
+              <div class="macro-progress" style="width: 80px; height: 6px;">
+                <div id="bar-fat-fill" class="macro-progress-fill fill-fat" style="width: 77%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Food Logger -->
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.85rem;">
+            <h4 style="font-size: 1rem; font-weight: 700;">⚡ Quick Log Whole Food</h4>
+            <select id="food-quick-select" class="select-control"></select>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <select id="target-meal-slot" class="select-control" style="flex: 1;">
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch" selected>Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snacks">Pre/Post Snack</option>
+              </select>
+              <button id="add-food-btn" class="btn btn-primary btn-sm">
+                + Log Food
+              </button>
+            </div>
+
+            <button id="clear-nutrition-btn" class="btn btn-secondary btn-sm" style="align-self: flex-start; margin-top: 0.5rem; font-size: 0.8rem;">
+              🔄 Reset Today's Meals
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Meal Slots (Breakfast, Lunch, Dinner, Snacks) -->
+        <div class="glass-panel" style="padding: 2rem;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem;">Logged Meal Slots</h3>
+
+          <!-- Breakfast -->
+          <div class="meal-slot-card">
+            <div class="meal-slot-header">
+              <h4 style="font-size: 1rem; font-weight: 700;">🌅 Breakfast</h4>
+              <span class="badge badge-green">Morning Fuel</span>
+            </div>
+            <div id="meal-list-breakfast" class="food-log-list"></div>
+          </div>
+
+          <!-- Lunch -->
+          <div class="meal-slot-card">
+            <div class="meal-slot-header">
+              <h4 style="font-size: 1rem; font-weight: 700;">☀️ Lunch</h4>
+              <span class="badge badge-cyan">Midday Recovery</span>
+            </div>
+            <div id="meal-list-lunch" class="food-log-list"></div>
+          </div>
+
+          <!-- Dinner -->
+          <div class="meal-slot-card">
+            <div class="meal-slot-header">
+              <h4 style="font-size: 1rem; font-weight: 700;">🌙 Dinner</h4>
+              <span class="badge badge-purple">Night Rebuild</span>
+            </div>
+            <div id="meal-list-dinner" class="food-log-list"></div>
+          </div>
+
+          <!-- Snacks -->
+          <div class="meal-slot-card">
+            <div class="meal-slot-header">
+              <h4 style="font-size: 1rem; font-weight: 700;">⚡ Snacks & Supplements</h4>
+              <span class="badge badge-orange">Pre/Post Workout</span>
+            </div>
+            <div id="meal-list-snacks" class="food-log-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. CURATED TRAINING PROGRAMS
+       ========================================================================= -->
+  <section class="section" id="programs" style="background: rgba(0, 0, 0, 0.25);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Periodized Protocols</div>
+        <h2 class="section-title">Master-Crafted <span class="gradient-text">Workout Programs</span></h2>
+        <p class="section-subtitle">
+          Evidence-backed routines tested and refined by sports scientists. Load any program directly into your routine builder with a single click.
+        </p>
+      </div>
+
+      <div class="programs-grid">
+        <!-- Program 1: PPL -->
+        <div class="glass-panel program-card">
+          <div class="program-banner" style="background: linear-gradient(135deg, #166534 0%, #064e3b 100%);">
+            <span class="badge badge-green">HYPERTROPHY</span>
+            <div>
+              <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Push Pull Legs (PPL)</h4>
+              <span style="font-size: 0.8rem; color: #86efac;">Maximal Muscle Growth</span>
+            </div>
+          </div>
+          <div class="program-body">
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              The gold-standard training split for lean muscle hypertrophy. Hits every major muscle group twice per week with optimal recovery windows between sessions.
+            </p>
+
+            <div class="program-stats">
+              <div class="program-stat">
+                <span class="num">6 Days</span>
+                <span class="lbl">Per Week</span>
+              </div>
+              <div class="program-stat">
+                <span class="num">55 Mins</span>
+                <span class="lbl">Avg Duration</span>
+              </div>
+              <div class="program-stat">
+                <span class="num">Int. / Adv.</span>
+                <span class="lbl">Experience</span>
+              </div>
+            </div>
+
+            <div class="program-schedule-list">
+              <div>• <strong>Push A:</strong> Bench, Overhead Press, Incline DB, Triceps</div>
+              <div>• <strong>Pull A:</strong> Deadlift, Barbell Rows, Pull-ups, Biceps</div>
+              <div>• <strong>Legs A:</strong> Squats, RDLs, Walking Lunges, Calves</div>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: auto;" onclick="loadProgramIntoRoutine('ppl')">
+              📥 Load Push Workout into Routine
+            </button>
+          </div>
+        </div>
+
+        <!-- Program 2: Functional Hybrid -->
+        <div class="glass-panel program-card">
+          <div class="program-banner" style="background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);">
+            <span class="badge badge-cyan">HYBRID ATHLETE</span>
+            <div>
+              <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Functional Conditioning</h4>
+              <span style="font-size: 0.8rem; color: #67e8f9;">Speed, Power & Bodyweight</span>
+            </div>
+          </div>
+          <div class="program-body">
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              Combines heavy compound strength work with high-intensity functional calisthenics and aerobic threshold conditioning for all-around athletic dominance.
+            </p>
+
+            <div class="program-stats">
+              <div class="program-stat">
+                <span class="num">4 Days</span>
+                <span class="lbl">Per Week</span>
+              </div>
+              <div class="program-stat">
+                <span class="num">45 Mins</span>
+                <span class="lbl">Avg Duration</span>
+              </div>
+              <div class="program-stat">
+                <span class="num">All Levels</span>
+                <span class="lbl">Experience</span>
+              </div>
+            </div>
+
+            <div class="program-schedule-list">
+              <div>• <strong>Day 1:</strong> Squat & Plyometric Box Jumps</div>
+              <div>• <strong>Day 2:</strong> Pull-ups, Dips & Kettlebell Swings</div>
+              <div>• <strong>Day 3:</strong> VO2 Max Tabata & Core Stability</div>
+            </div>
+
+            <button class="btn btn-cyan" style="margin-top: auto;" onclick="loadProgramIntoRoutine('hybrid')">
+              📥 Load Hybrid Workout into Routine
+            </button>
+          </div>
+        </div>
+
+        <!-- Program 3: Power 5x5 -->
+        <div class="glass-panel program-card">
+          <div class="program-banner" style="background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);">
+            <span class="badge badge-orange">RAW STRENGTH</span>
+            <div>
+              <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Strength & Power 5x5</h4>
+              <span style="font-size: 0.8rem; color: #fdba74;">Linear Progression</span>
+            </div>
+          </div>
+          <div class="program-body">
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              The time-tested barbell system designed to add pounds to your squat, bench, and deadlift. Focuses on low reps and progressive overload each session.
+            </p>
+
+            <div class="program-stats">
+              <div class="program-stat">
+                <span class="num">3 Days</span>
+                <span class="lbl">Per Week</span>
+              </div>
+              <div class="program-stat">
+                <span class="num">60 Mins</span>
+                <span class="lbl">Avg Duration</span>
+              </div>
+              <div class="program-stat">
+                <span class="num">Beginner / Int.</span>
+                <span class="lbl">Experience</span>
+              </div>
+            </div>
+
+            <div class="program-schedule-list">
+              <div>• <strong>Workout A:</strong> Squat 5x5, Bench 5x5, Barbell Row 5x5</div>
+              <div>• <strong>Workout B:</strong> Squat 5x5, OHP 5x5, Deadlift 1x5</div>
+              <div>• Continuous 2.5kg linear load increments</div>
+            </div>
+
+            <button class="btn btn-secondary" style="margin-top: auto;" onclick="loadProgramIntoRoutine('power5x5')">
+              📥 Load 5x5 Workout into Routine
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. PR RECORDS & PROGRESS TRACKER
+       ========================================================================= -->
+  <section class="section" id="tracker">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Performance Ledger</div>
+        <h2 class="section-title">Personal Records & <span class="gradient-text">Weight History</span></h2>
+        <p class="section-subtitle">
+          Record your milestone lifts and visualize your body composition trends over time. Every PR is saved securely in your browser.
+        </p>
+      </div>
+
+      <!-- PR Cards -->
+      <div class="pr-tracker-grid" id="pr-cards-container">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Add PR & Weight Chart Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem;">
+        <!-- Log PR Form -->
+        <div class="glass-panel" style="padding: 2rem;">
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">🔥 Log New Personal Record</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Crushed a new milestone? Record it here to update your benchmark dashboard.
+          </p>
+
+          <form id="pr-entry-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="form-group">
+              <label class="form-label" for="pr-lift-select">Compound Lift</label>
+              <select id="pr-lift-select" class="select-control">
+                <option value="bench">Barbell Bench Press</option>
+                <option value="squat">Barbell Back Squat</option>
+                <option value="deadlift">Conventional Deadlift</option>
+                <option value="ohp">Overhead Press</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pr-new-weight">Weight (kg)</label>
+              <input type="number" id="pr-new-weight" class="input-control" placeholder="e.g. 115" min="20" max="600" step="0.5" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
+              ⭐ Record Personal Record
+            </button>
+          </form>
+        </div>
+
+        <!-- Weight Chart -->
+        <div class="glass-panel" style="padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h3 style="font-size: 1.2rem;">Bodyweight Trajectory (kg)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">-5.0 kg Lean Cut Phase (8-Week Trend)</p>
+            </div>
+            <span class="badge badge-green">Consistently Trending</span>
+          </div>
+
+          <div id="progress-chart-wrapper" class="chart-container">
+            <!-- Rendered by renderProgressChart() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. TRANSFORMATION BEFORE / AFTER INTERACTIVE SLIDER
+       ========================================================================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Verified Transformations</div>
+        <h2 class="section-title">Measurable Results In <span class="gradient-text">12 Weeks</span></h2>
+        <p class="section-subtitle">
+          Drag the interactive slider below to reveal real physiological recomposition achieved following the FitTrack protocol.
+        </p>
+      </div>
+
+      <div class="comparison-container" id="comparison-slider">
+        <!-- Before Layer (Background) -->
+        <div class="comparison-image comparison-before">
+          <span class="comparison-badge badge-before">Week 0 (Baseline)</span>
+          <div class="comparison-content-card">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">📊</div>
+            <h3 style="color: #94a3b8;">Baseline Metrics</h3>
+            <p style="color: #cbd5e1; margin-bottom: 1rem;">Body Fat: <strong>23.8%</strong> • Weight: <strong>86.5 kg</strong><br>Resting HR: <strong>68 BPM</strong> • 1RM Bench: <strong>75 kg</strong></p>
+            <span class="badge badge-orange">Untrained Conditioning</span>
+          </div>
+        </div>
+
+        <!-- After Layer (Clipped Overlay) -->
+        <div class="comparison-image comparison-after" id="comparison-after-layer">
+          <span class="comparison-badge badge-after">Week 12 (FitTrack Protocol)</span>
+          <div class="comparison-content-card">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚡</div>
+            <h3 style="color: var(--accent-primary);">Recomposition Achieved</h3>
+            <p style="color: #f8fafc; margin-bottom: 1rem;">Body Fat: <strong>14.4% (-9.4%)</strong> • Lean Mass: <strong>+4.2 kg</strong><br>Resting HR: <strong>54 BPM</strong> • 1RM Bench: <strong>110 kg (+35 kg)</strong></p>
+            <span class="badge badge-green">Peak Athletic Form</span>
+          </div>
+        </div>
+
+        <!-- Slider Handle -->
+        <div class="slider-handle" id="comparison-handle" title="Drag to compare">
+          ◀ ▶
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. EXPERT COACHING ROSTER
+       ========================================================================= -->
+  <section class="section" style="background: rgba(0, 0, 0, 0.2);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Elite Mentorship</div>
+        <h2 class="section-title">Guided By World-Class <span class="gradient-text">Coaches</span></h2>
+        <p class="section-subtitle">
+          Our coaching staff includes Olympic lifters, CSCS-certified strength coaches, and sports nutrition specialists.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-panel feature-card">
+          <div style="width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #06b6d4); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.25rem;">
+            🏋️‍♂️
+          </div>
+          <h3>Marcus Vance, CSCS</h3>
+          <span class="badge badge-green" style="align-self: flex-start; margin-bottom: 0.75rem;">Head of Hypertrophy</span>
+          <p>Former collegiate strength coach with 12+ years optimizing mechanical tension and neuromuscular hypertrophy for national competitors.</p>
+        </div>
+
+        <div class="glass-panel feature-card">
+          <div style="width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #06b6d4, #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.25rem;">
+            🥗
+          </div>
+          <h3>Elena Rostova, MS, RD</h3>
+          <span class="badge badge-cyan" style="align-self: flex-start; margin-bottom: 0.75rem;">Sports Dietetics & Fueling</span>
+          <p>Master's in Exercise Physiology specializing in body composition recomposition, intra-workout carbohydrates, and micronutrient density.</p>
+        </div>
+
+        <div class="glass-panel feature-card">
+          <div style="width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #f97316, #ef4444); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.25rem;">
+            ⚡
+          </div>
+          <h3>Coach David Thorne</h3>
+          <span class="badge badge-orange" style="align-self: flex-start; margin-bottom: 0.75rem;">Functional Conditioning</span>
+          <p>Specializes in VO2 max optimization, hybrid athletic capacity, joint mobility preservation, and high-intensity interval thresholds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. PRICING & MEMBERSHIP
+       ========================================================================= -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Transparent Investment</div>
+        <h2 class="section-title">Invest In Your <span class="gradient-text">Physical Mastery</span></h2>
+        <p class="section-subtitle">
+          Start for free with essential tools or upgrade for unlimited periodized programs, 1-on-1 coaching, and advanced analytics.
+        </p>
+      </div>
+
+      <!-- Monthly / Annual Toggle -->
+      <div class="pricing-toggle-wrap">
+        <span style="font-weight: 600;">Monthly Billing</span>
+        <div class="pricing-switch" id="pricing-switch" title="Toggle Annual Billing">
+          <div class="switch-handle"></div>
+        </div>
+        <span style="font-weight: 600;">Annual Billing <span class="badge badge-green" style="font-size: 0.7rem;">SAVE 25%</span></span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="glass-panel pricing-card">
+          <h3 style="font-size: 1.3rem;">Starter Athlete</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Essential tools for serious individuals</p>
+          <div class="pricing-price">$0 <span>/ forever</span></div>
+          <p style="font-size: 0.85rem;">Free access to all core calculators and fundamental routines.</p>
+
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Scientific TDEE & Macro Calculator</li>
+            <li><span class="check">✓</span> 1RM & Heart Rate Zone Estimators</li>
+            <li><span class="check">✓</span> Full Exercise Database with Form Cues</li>
+            <li><span class="check">✓</span> Basic Audio Rest & HIIT Timer</li>
+            <li><span class="check">✓</span> Offline LocalStorage Persistence</li>
+          </ul>
+
+          <button class="btn btn-secondary" onclick="showToast('You are on the Free Starter Athlete tier.')">
+            Current Tier
+          </button>
+        </div>
+
+        <!-- Pro Athlete Plan (Featured) -->
+        <div class="glass-panel pricing-card featured">
+          <div class="popular-badge">MOST POPULAR</div>
+          <h3 style="font-size: 1.3rem;">Pro Athlete</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">For athletes demanding complete data tracking</p>
+          <div class="pricing-price"><span id="price-pro">$19</span> <span class="price-period">/month</span></div>
+          <p style="font-size: 0.85rem;">Full suite of periodized protocols and unrestricted tracking.</p>
+
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> <strong>Everything in Starter</strong></li>
+            <li><span class="check">✓</span> All Master Training Programs (PPL, 5x5, Hybrid)</li>
+            <li><span class="check">✓</span> Unlimited Routine Builder Slots</li>
+            <li><span class="check">✓</span> Daily Macro & Meal Food Logger</li>
+            <li><span class="check">✓</span> Progressive Overload & Weight Analytics</li>
+            <li><span class="check">✓</span> Priority Feature Access</li>
+          </ul>
+
+          <button class="btn btn-primary" onclick="triggerConfetti(); showToast('🎉 Welcome to FitTrack Pro Athlete tier!')">
+            ⚡ Start 14-Day Free Trial
+          </button>
+        </div>
+
+        <!-- Elite Coaching Plan -->
+        <div class="glass-panel pricing-card">
+          <h3 style="font-size: 1.3rem;">Elite 1-on-1</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Bespoke programming & certified coach review</p>
+          <div class="pricing-price"><span id="price-elite">$69</span> <span class="price-period">/month</span></div>
+          <p style="font-size: 0.85rem;">Direct access to certified CSCS coaches and sports dietitians.</p>
+
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> <strong>Everything in Pro</strong></li>
+            <li><span class="check">✓</span> Weekly Video Form Checks & Biofeedback</li>
+            <li><span class="check">✓</span> Custom Micronutrient & Meal Blueprint</li>
+            <li><span class="check">✓</span> Direct WhatsApp / Chat Access to Coach</li>
+            <li><span class="check">✓</span> Competition & Meet Peaking Strategy</li>
+          </ul>
+
+          <button class="btn btn-secondary" onclick="showToast('Coaching application received. A mentor will reach out within 24h.')">
+            Apply For Coaching
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. FREQUENTLY ASKED QUESTIONS (FAQ)
+       ========================================================================= -->
+  <section class="section" id="faq" style="background: rgba(0, 0, 0, 0.2);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Knowledge Base</div>
+        <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+        <p class="section-subtitle">
+          Evidence-based answers to key questions about progressive overload, nutrition, and training frequency.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>What is Progressive Overload and why is it essential?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Progressive overload is the gradual increase of stress placed upon the musculoskeletal and nervous systems during exercise. To stimulate continuous muscle hypertrophy and neural adaptation, you must systematically increase weight lifted, reps performed, or overall training volume over successive sessions.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How accurate is the Mifflin-St Jeor TDEE formula?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Clinical studies show that the Mifflin-St Jeor equation predicts Resting Metabolic Rate (RMR) within 10% of indirect calorimetry in the majority of individuals, making it the most validated non-laboratory predictive equation available today.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How much protein do I need to optimize muscle growth?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Current sports science literature (such as Morton et al., British Journal of Sports Medicine) indicates that an intake of 1.6 to 2.2 grams of protein per kilogram of body weight (0.7 to 1.0g per pound) is optimal for maximizing muscle protein synthesis in resistance-trained athletes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Should I train to muscular failure on every set?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Training to absolute concentric failure on every compound set generates excessive central nervous system fatigue and increases joint strain. Research demonstrates that training with 1 to 3 Reps in Reserve (RIR) produces equivalent hypertrophy while dramatically improving recovery between workouts.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I use FitTrack Pro offline without an internet connection?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Yes! All workouts, calculators, personal records, and meal entries are stored locally on your device via HTML5 LocalStorage. The audio synthesizer uses the native Web Audio API and does not require streaming external audio files.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       14. FOOTER & NEWSLETTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#" class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">⚡</div>
+            <span>FITTRACK PRO</span>
+          </a>
+          <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            The all-in-one athletic training operating system. Engineered for individuals dedicated to scientific progress, progressive overload, and physical mastery.
+          </p>
+
+          <form id="newsletter-form" style="display: flex; gap: 0.5rem; max-width: 380px;">
+            <input type="email" id="newsletter-email" class="input-control" placeholder="Enter your email for pro tips..." required style="padding: 0.6rem 0.85rem; font-size: 0.85rem;">
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="footer-col">
+          <h5>System Tools</h5>
+          <ul>
+            <li><a href="#calculators">TDEE & Macro Calculator</a></li>
+            <li><a href="#calculators">1-Rep Max (1RM) Estimator</a></li>
+            <li><a href="#calculators">Heart Rate Zone Matrix</a></li>
+            <li><a href="#calculators">Navy Body Fat Calculator</a></li>
+            <li><a href="#exercises">Exercise Movement Library</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Training Protocols</h5>
+          <ul>
+            <li><a href="#programs">Push Pull Legs (PPL) Split</a></li>
+            <li><a href="#programs">Functional Hybrid Conditioning</a></li>
+            <li><a href="#programs">5x5 Compound Power Protocol</a></li>
+            <li><a href="#tracker">Personal Record Benchmark Ledger</a></li>
+            <li><a href="#nutrition">Daily Macro Fuel Logger</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform & Legal</h5>
+          <ul>
+            <li><a href="#pricing">Membership Plans</a></li>
+            <li><a href="#faq">Scientific Methodology</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Medical Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 FitTrack Pro Inc. All rights reserved. Built for athletic excellence.</div>
+        <div style="font-size: 0.775rem; color: var(--text-muted); max-width: 500px; text-align: right;">
+          Disclaimer: Consult a licensed physician prior to beginning any high-intensity resistance training or strict caloric deficit program.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/data-store.js"></script>
+  <script src="js/exercise-db.js"></script>
+  <script src="js/calculators.js"></script>
+  <script src="js/workout-tracker.js"></script>
+  <script src="js/nutrition-planner.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
